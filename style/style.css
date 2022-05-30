@@ -59,10 +59,6 @@ header {
     margin: 0 auto;
 }
 
-ul {
-    font-size: 11px;
-}
-
 .title-content {
     display: flex;
     align-items: center;
@@ -75,4 +71,21 @@ h5 {
 
 .cooking-icon {
     margin-left: 5px;
+}
+
+.recipe-content {
+    display: flex;
+}
+
+.ingredient-list {
+    flex: 2;
+    padding: 0;
+    font-size: 11px;
+    list-style: none;
+}
+
+.recipe-description {
+    font-size: 11px;
+    flex: 2;
+    text-align: justify;
 }
