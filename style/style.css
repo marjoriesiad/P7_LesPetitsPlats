@@ -56,7 +56,16 @@ header {
 
 .card {
     min-width: 450px;
+    max-height: 500px;
     margin: 0 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-body {
+    padding: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .title-content {

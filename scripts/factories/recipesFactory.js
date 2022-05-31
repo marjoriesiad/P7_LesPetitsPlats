@@ -33,7 +33,11 @@ function recipesFactory(data) {
 
         ingredients.forEach((ingredient) => {
             const ingredientItem = document.createElement("li");
-            ingredientItem.innerHTML = `<b>${ingredient.ingredient}</b>: ${ingredient.quantity} ${ingredient.unit}`;
+            if (ingredient.unit == undefined) {
+                ingredientItem.innerHTML = `<b>${ingredient.ingredient}</b>: ${ingredient.quantity}`;
+            } else {
+                ingredientItem.innerHTML = `<b>${ingredient.ingredient}</b>: ${ingredient.quantity} ${ingredient.unit}`;
+            }
             ingredientList.appendChild(ingredientItem);
 
         })
