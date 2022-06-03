@@ -62,10 +62,16 @@ header {
     text-overflow: ellipsis;
 }
 
+.card-img-top {
+    height: 180px;
+    object-fit: cover;
+}
+
 .card-body {
     padding: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
+    background-color: #E7E7E7;
 }
 
 .title-content {
