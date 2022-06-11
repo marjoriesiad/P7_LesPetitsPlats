@@ -1,27 +1,29 @@
 function tagsFactory(data) {
     const { ingredients, appliance, ustensils } = data;
-    //console.log(ustensils);
 
     function getIngredientsCardDOM() {
         const ingredientTag = document.createElement("li");
-        ingredientTag.classList.add("ingredient-taglist");
-        const array = new Array();
-        ingredients.forEach((ingredientList) => {
+        ingredientTag.classList.add("taglist");
 
+        const ingredientList = [];
 
-            array.push(ingredientList.ingredient);
-
-            ingredientTag.textContent = ingredientList.ingredient;
-
+        ingredients.map(ingr => {
+            ingredientList.push(ingr.ingredient);
         })
 
-        //console.log(array);
+        //console.log(ingredientList);
+
         return (ingredientTag);
     }
 
+
+
+
+
+
     function getApplianceCardDOM() {
         const applianceTag = document.createElement("li");
-        applianceTag.classList.add("appliance-taglist");
+        applianceTag.classList.add("taglist");
 
         applianceTag.textContent = appliance;
 
@@ -31,10 +33,10 @@ function tagsFactory(data) {
 
     function getUstensilsCardDOM() {
         const ustensilsTag = document.createElement("li");
-        ustensilsTag.classList.add("ustensils-taglist");
+        ustensilsTag.classList.add("taglist");
 
         ustensils.forEach((ustensil) => {
-            console.log(ustensil);
+            //console.log(ustensil);
             ustensilsTag.textContent = ustensil;
 
         })

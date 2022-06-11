@@ -4,22 +4,40 @@ function getRecipes() {
         .then((data) => {
             const recipes = data.recipes;
             displayIngredients(recipes);
-            displayAppliances(recipes)
-            displayUstentils(recipes);
+            selectTags();
         });
 
 }
 
+const tagSelected = document.querySelector(".tag-selected");
+const tagArray = [];
+const testArray = new Array();
 
 function displayIngredients(recipes) {
     const ingredientsSection = document.querySelector(".ingredient-items");
 
     recipes.forEach((recipe) => {
-        const ingredientsModel = tagsFactory(recipe);
-        const ingredientsCardDOM = ingredientsModel.getIngredientsCardDOM();
-        ingredientsSection.appendChild(ingredientsCardDOM);
-
+        tagArray.push(recipe.ingredients)
     });
+
+    let nouveauTableau = [];
+    tagArray.map(el => {
+        el.map(element => {
+            nouveauTableau.push(element.ingredient);
+        })
+    })
+
+    let unique = nouveauTableau.filter((el, i) =>
+        nouveauTableau.indexOf(el) === i
+    );
+
+    unique.forEach(unik => {
+        const ingredientList = document.createElement("li");
+        ingredientList.classList.add("taglist");
+        ingredientList.textContent = unik;
+        ingredientsSection.appendChild(ingredientList);
+    })
+
 
     const ingredientBtn = document.querySelector(".ingredients");
     const ingredientList = document.querySelector(".ingredient-tag");
@@ -35,51 +53,33 @@ function displayIngredients(recipes) {
         }
 
     });
+
+
+
 }
 
-function displayAppliances(recipes) {
-    const applianceSection = document.querySelector(".appliance-items");
 
-    recipes.forEach((recipe) => {
-        const applianceModel = tagsFactory(recipe);
-        const applianceCardDOM = applianceModel.getApplianceCardDOM();
-        applianceSection.appendChild(applianceCardDOM);
-    })
+function selectTags() {
+    const tagsList = document.querySelectorAll(".taglist");
 
-    const applianceBtn = document.querySelector(".appliance");
-    const applianceList = document.querySelector(".appliance-tag");
+    for (let i = 0; i < tagsList.length; i++) {
+        let tagItem = tagsList[i];
 
-    applianceBtn.addEventListener("click", () => {
-        applianceList.classList.toggle("open");
-        if (applianceList.classList.contains("open")) {
-            applianceList.style.display = "block";
-        } else {
-            applianceList.style.display = "none";
-        }
-    })
+        tagItem.addEventListener("click", () => {
+            const tagSelectedLi = document.createElement("li");
+            //tagSelectedLi.classList.add("test");
+            tagSelectedLi.textContent = tagItem.textContent;
+            tagSelected.appendChild(tagSelectedLi);
+            tagItem.style.display = "none";
+            testArray.push(tagItem.textContent);
+
+            console.log(testArray);
+        })
+    }
+
+
 }
 
-function displayUstentils(recipes) {
-    const ustensilSection = document.querySelector(".ustensils-items");
 
-    recipes.forEach((recipe) => {
-        const ustensilModel = tagsFactory(recipe);
-        const ustensilCardDOM = ustensilModel.getUstensilsCardDOM();
-        ustensilSection.appendChild(ustensilCardDOM);
-    })
-
-    const ustensilBtn = document.querySelector(".ustensils");
-    const ustensilList = document.querySelector(".ustensils-tag");
-
-    ustensilBtn.addEventListener("click", () => {
-        ustensilList.classList.toggle("open");
-
-        if (ustensilList.classList.contains("open")) {
-            ustensilList.style.display = "block";
-        } else {
-            ustensilList.style.display = "none";
-        }
-    })
-}
 
 getRecipes();

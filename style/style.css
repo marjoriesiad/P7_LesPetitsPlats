@@ -85,7 +85,7 @@ header {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.ingredient-taglist {
+.taglist {
     color: white;
     cursor: pointer;
 }
@@ -99,9 +99,9 @@ header {
 
 .card {
     min-width: 450px;
-    max-height: 500px;
+    max-height: 400px;
     margin: 0 auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
     text-overflow: ellipsis;
 }
 
@@ -112,9 +112,9 @@ header {
 
 .card-body {
     padding: 1rem;
+    background-color: #E7E7E7;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: #E7E7E7;
 }
 
 .title-content {
