@@ -23,13 +23,16 @@ function displayIngredients(recipes) {
     let nouveauTableau = [];
     tagArray.map(el => {
         el.map(element => {
-            nouveauTableau.push(element.ingredient);
+            nouveauTableau.push(element.ingredient.toLowerCase());
         })
     })
+
+
 
     let unique = nouveauTableau.filter((el, i) =>
         nouveauTableau.indexOf(el) === i
     );
+
 
     unique.forEach(unik => {
         const ingredientList = document.createElement("li");
