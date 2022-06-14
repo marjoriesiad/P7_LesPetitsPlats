@@ -3,9 +3,8 @@ function getRecipes() {
         .then((res) => res.json())
         .then((data) => {
             const recipes = data.recipes;
-
-
             displayRecipes(recipes);
+            addIngredients(recipes);
         });
 
 }

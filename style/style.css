@@ -23,6 +23,43 @@ header {
     padding: 5px;
 }
 
+.tag-selected {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    align-items: center;
+}
+
+.taglist-selected {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: white;
+    width: auto;
+    height: 37px;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.ingredient-selected {
+    background-color: #3282F7;
+}
+
+.appliance-selected {
+    background-color: #68D9A4;
+}
+
+.ustensils-selected {
+    background-color: #ED6454;
+}
+
+.taglist-img {
+    width: 20px;
+    margin-left: 5px;
+}
+
 .btn {
     width: 170px;
     height: 69px;
