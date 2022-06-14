@@ -65,8 +65,6 @@ function addIngredients(recipes) {
             tagSelected.appendChild(tagSelectedLi);
             tagSelectedLi.appendChild(tagImg);
             tagItem.style.display = "none";
-
-            //console.log(selectedTagArray);
         })
     }
 

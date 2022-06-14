@@ -5,6 +5,8 @@ function getRecipes() {
             const recipes = data.recipes;
             displayRecipes(recipes);
             addIngredients(recipes);
+            addAppliances(recipes);
+            addUstensils(recipes);
         });
 
 }
