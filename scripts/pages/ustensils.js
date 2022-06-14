@@ -47,6 +47,7 @@ function addUstensils(recipes) {
     const tagList = document.querySelectorAll(".taglist-ustensils");
     const tagSelected = document.querySelector(".tag-selected");
 
+
     for (let i = 0; i < tagList.length; i++) {
         let tagItem = tagList[i];
 
@@ -62,7 +63,6 @@ function addUstensils(recipes) {
             tagSelectedLi.appendChild(tagImg);
             tagItem.style.display = "none";
 
-            //console.log(selectedTagArray);
         })
     }
 
@@ -86,5 +86,8 @@ function addUstensils(recipes) {
             ustensilsItem.appendChild(ustensilNode);
         })
     })
+
+
+
 
 }

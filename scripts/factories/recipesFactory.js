@@ -67,6 +67,3 @@ function recipesFactory(data) {
     return { id, name, servings, ingredients, image, time, description, appliance, ustensils, getRecipesCardDOM };
 
 }
-
-// gérer les majuscules avec filter
-// Recherche = mettre dans un tableau de score

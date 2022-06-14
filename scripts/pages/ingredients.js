@@ -99,6 +99,17 @@ function addIngredients(recipes) {
             ingredientNode.classList.add("taglist-ingredients");
             ingredientItem.appendChild(ingredientNode);
         })
+
+        // affichage des recette suivant les tags choisis
+        recipes.forEach((recipe) => {
+            const searchByRecipe = recipe.ingredients.map(item => `${item.ingredient}`);
+
+            if (searchByRecipe.includes(ingr.textContent)) {
+                const recipeModel = recipesFactory(recipe);
+                recipeModel.getRecipesCardDOM();
+                return recipe;
+            }
+        })
     })
 
 }
