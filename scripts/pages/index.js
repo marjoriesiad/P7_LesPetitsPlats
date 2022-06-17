@@ -7,7 +7,7 @@ function getRecipes() {
             addIngredients(recipes);
             addAppliances(recipes);
             addUstensils(recipes);
-            searchByTags(recipes);
+            //searchByTags(recipes);
         });
 
 }

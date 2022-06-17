@@ -1,4 +1,4 @@
-function addIngredients(recipes) {
+function addIngredients(recipes, e) {
 
     //  GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const ingredientBtn = document.querySelector(".ingredients");
@@ -54,17 +54,19 @@ function addIngredients(recipes) {
     for (let i = 0; i < tagList.length; i++) {
         let tagItem = tagList[i];
 
-        tagItem.addEventListener("click", () => {
-            const tagSelectedLi = document.createElement("li");
-            const tagImg = document.createElement("img");
-            tagSelectedLi.classList.add("taglist-selected");
-            tagSelectedLi.classList.add("ingredient-selected");
-            tagImg.classList.add("taglist-img");
-            tagImg.setAttribute("src", "./images/delete-tag.svg");
-            tagSelectedLi.textContent = tagItem.textContent;
-            tagSelected.appendChild(tagSelectedLi);
-            tagSelectedLi.appendChild(tagImg);
-            tagItem.style.display = "none";
+        document.addEventListener("click", (e) => {
+            if (e.target && e.target.classList.contains("taglist-ingredients", "tag-selected")) {
+                const tagSelectedLi = document.createElement("li");
+                const tagImg = document.createElement("img");
+                tagSelectedLi.classList.add("taglist-selected");
+                tagSelectedLi.classList.add("ingredient-selected");
+                tagImg.classList.add("taglist-img");
+                tagImg.setAttribute("src", "./images/delete-tag.svg");
+                tagSelectedLi.textContent = tagItem.textContent;
+                tagSelected.appendChild(tagSelectedLi);
+                tagSelectedLi.appendChild(tagImg);
+                tagItem.style.display = "none";
+            }
         })
     }
 
@@ -113,3 +115,7 @@ function addIngredients(recipes) {
     })
 
 }
+
+// SEPARER LES FONCTIONS
+// EVENT SUR LE PARENT (au click sur le parent, event sur l'enfant)
+// https://stackoverflow.com/questions/14258787/add-event-listener-on-elements-created-dynamically

@@ -41,25 +41,25 @@ function addAppliances(recipes) {
 
 
     // CREATION DU TAG AU CLICK SUR L'APPAREIL
-    const tagList = document.querySelectorAll(".taglist-appliance");
     const tagSelected = document.querySelector(".tag-selected");
-
     const tagsList = document.querySelectorAll(".taglist-appliance");
 
     for (let i = 0; i < tagsList.length; i++) {
         let tagItem = tagsList[i];
 
-        tagItem.addEventListener("click", () => {
-            const tagSelectedLi = document.createElement("li");
-            const tagImg = document.createElement("img");
-            tagSelectedLi.classList.add("taglist-selected");
-            tagSelectedLi.classList.add("appliance-selected");
-            tagImg.classList.add("taglist-img");
-            tagImg.setAttribute("src", "./images/delete-tag.svg");
-            tagSelectedLi.textContent = tagItem.textContent;
-            tagSelected.appendChild(tagSelectedLi);
-            tagSelectedLi.appendChild(tagImg);
-            tagItem.style.display = "none";
+        document.addEventListener("click", (e) => {
+            if (e.target && e.target.classList.contains("taglist-appliance", "tag-selected")) {
+                const tagSelectedLi = document.createElement("li");
+                const tagImg = document.createElement("img");
+                tagSelectedLi.classList.add("taglist-selected");
+                tagSelectedLi.classList.add("appliance-selected");
+                tagImg.classList.add("taglist-img");
+                tagImg.setAttribute("src", "./images/delete-tag.svg");
+                tagSelectedLi.textContent = tagItem.textContent;
+                tagSelected.appendChild(tagSelectedLi);
+                tagSelectedLi.appendChild(tagImg);
+                tagItem.style.display = "none";
+            }
         })
     }
 

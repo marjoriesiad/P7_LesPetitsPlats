@@ -51,17 +51,19 @@ function addUstensils(recipes) {
     for (let i = 0; i < tagList.length; i++) {
         let tagItem = tagList[i];
 
-        tagItem.addEventListener("click", () => {
-            const tagSelectedLi = document.createElement("li");
-            const tagImg = document.createElement("img");
-            tagSelectedLi.classList.add("taglist-selected");
-            tagSelectedLi.classList.add("ustensils-selected");
-            tagImg.classList.add("taglist-img");
-            tagImg.setAttribute("src", "./images/delete-tag.svg");
-            tagSelectedLi.textContent = tagItem.textContent;
-            tagSelected.appendChild(tagSelectedLi);
-            tagSelectedLi.appendChild(tagImg);
-            tagItem.style.display = "none";
+        document.addEventListener("click", (e) => {
+            if (e.target && e.target.classList.contains("taglist-ustensils", "tag-selected")) {
+                const tagSelectedLi = document.createElement("li");
+                const tagImg = document.createElement("img");
+                tagSelectedLi.classList.add("taglist-selected");
+                tagSelectedLi.classList.add("ustensils-selected");
+                tagImg.classList.add("taglist-img");
+                tagImg.setAttribute("src", "./images/delete-tag.svg");
+                tagSelectedLi.textContent = tagItem.textContent;
+                tagSelected.appendChild(tagSelectedLi);
+                tagSelectedLi.appendChild(tagImg);
+                tagItem.style.display = "none";
+            }
 
         })
     }
