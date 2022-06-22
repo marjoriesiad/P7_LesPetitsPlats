@@ -1,16 +1,20 @@
-function addIngredients(recipes, e) {
+function addIngredients(recipes) {
 
     //  GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const ingredientBtn = document.querySelector(".ingredients");
     const ingredientList = document.querySelector(".ingredient-tag");
+    const tagListSelected = document.querySelectorAll(".taglist-selected");
+    const arrow = document.querySelector(".arrow");
 
     ingredientBtn.addEventListener("click", () => {
         ingredientList.classList.toggle("open");
 
         if (ingredientList.classList.contains("open")) {
             ingredientList.style.display = "block";
+            arrow.style.transform = "rotate(180deg)";
         } else {
             ingredientList.style.display = "none";
+            arrow.style.transform = "rotate(deg)";
         }
     });
 
@@ -40,44 +44,43 @@ function addIngredients(recipes, e) {
     // affichage des ingrédients dans la liste de tags
     filteredIngredients.forEach(filteredIngredient => {
         const ingredientList = document.createElement("li");
-        ingredientList.classList.add("taglist");
-        ingredientList.classList.add("taglist-ingredients");
+        ingredientList.classList.add("taglist", "taglist-ingredients");
         ingredientList.textContent = filteredIngredient;
         ingredientsSection.appendChild(ingredientList);
     })
 
 
-    // création du tag au click sur l'ingrédient
+    // création du tag au click sur l'ingrédient - A REFAIRE POUR POUVOIR CREE UN TAG APRES UNE RECHERCHE
     const tagList = document.querySelectorAll(".taglist-ingredients");
     const tagSelected = document.querySelector(".tag-selected");
 
     for (let i = 0; i < tagList.length; i++) {
         let tagItem = tagList[i];
 
-        document.addEventListener("click", (e) => {
-            if (e.target && e.target.classList.contains("taglist-ingredients", "tag-selected")) {
-                const tagSelectedLi = document.createElement("li");
-                const tagImg = document.createElement("img");
-                tagSelectedLi.classList.add("taglist-selected");
-                tagSelectedLi.classList.add("ingredient-selected");
-                tagImg.classList.add("taglist-img");
-                tagImg.setAttribute("src", "./images/delete-tag.svg");
-                tagSelectedLi.textContent = tagItem.textContent;
-                tagSelected.appendChild(tagSelectedLi);
-                tagSelectedLi.appendChild(tagImg);
-                tagItem.style.display = "none";
-            }
+        tagItem.addEventListener("click", (e) => {
+            //if (e.target && e.target.classList.contains("taglist-ingredients", "tag-selected")) { // A REFAIRE -- MET TOUS LES TAGS AU LIEU D'UN SEUL
+            const tagSelectedLi = document.createElement("li");
+            const tagImg = document.createElement("img");
+            tagSelectedLi.classList.add("taglist-selected");
+            tagSelectedLi.classList.add("ingredient-selected");
+            tagImg.classList.add("taglist-img");
+            tagImg.setAttribute("src", "./images/delete-tag.svg");
+            tagSelectedLi.textContent = tagItem.textContent;
+            tagSelected.appendChild(tagSelectedLi);
+            tagSelectedLi.appendChild(tagImg);
+            tagItem.style.display = "none";
+            // }
         })
     }
 
     // suppression du tag au click sur celui-ci - A REFAIRE, NE FONCTIONNE PAS
-    const ingredientSelected = document.querySelectorAll(".taglist-selected");
+    const ingredientSelected = document.querySelectorAll(".taglist-selected", "ingredient-selected");
 
     for (i = 0; i < ingredientSelected.length; i++) {
-        let selectedTag = ingredientSelected[i];
+        const selectedTag = ingredientSelected[i];
 
         selectedTag.addEventListener("click", () => {
-            tagImg.style.display = "block";
+            //tagImg.style.display = "block";
             selectedTag.style.display = "none";
         })
 
@@ -100,17 +103,6 @@ function addIngredients(recipes, e) {
             ingredientNode.classList.add("taglist");
             ingredientNode.classList.add("taglist-ingredients");
             ingredientItem.appendChild(ingredientNode);
-        })
-
-        // affichage des recette suivant les tags choisis
-        recipes.forEach((recipe) => {
-            const searchByRecipe = recipe.ingredients.map(item => `${item.ingredient}`);
-
-            if (searchByRecipe.includes(ingr.textContent)) {
-                const recipeModel = recipesFactory(recipe);
-                recipeModel.getRecipesCardDOM();
-                return recipe;
-            }
         })
     })
 

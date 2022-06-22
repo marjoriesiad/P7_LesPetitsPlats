@@ -1,15 +1,17 @@
-function searchByTags(recipes) {
+function searchByIngredientTag(recipes) {
+    const searchResults = document.querySelector(".recipes");
+    const ingredientTagList = document.querySelector(".ingredient-selected").textContent;
 
-    const tagsSelected = document.querySelectorAll("taglist-selected");
-    let selectedTags = [];
 
-    tagsSelected.forEach((tag) => {
-        tag.addEventListener("click", () => {
-            selectedTags.push(tag);
-            console.log(selectedTags);
+
+    recipes.forEach((recipe) => {
+        recipe.ingredients.forEach((recipeIngredient) => {
+            if (ingredientTagList.toLowerCase() == recipeIngredient) {
+                console.log(recipe.id);
+            }
         })
-
     })
+
 
 
 
