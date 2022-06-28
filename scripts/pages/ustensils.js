@@ -3,14 +3,17 @@ function addUstensils(recipes) {
     // GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const ustensilsBtn = document.querySelector(".ustensils");
     const ustensilsList = document.querySelector(".ustensils-tag");
+    const arrow = document.querySelector(".arrow");
 
     ustensilsBtn.addEventListener("click", () => {
         ustensilsList.classList.toggle("open");
 
         if (ustensilsList.classList.contains("open")) {
             ustensilsList.style.display = "block";
+            arrow.style.transform = "rotate(180deg)";
         } else {
             ustensilsList.style.display = "none";
+            arrow.style.transform = "rotate(0deg)";
         }
     });
 

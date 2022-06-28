@@ -3,15 +3,17 @@ function addAppliances(recipes) {
     // GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const applianceBtn = document.querySelector(".appliance");
     const appList = document.querySelector(".appliance-tag");
+    const arrow = document.querySelector(".arrow");
 
     applianceBtn.addEventListener("click", () => {
         appList.classList.toggle("open");
 
         if (appList.classList.contains("open")) {
             appList.style.display = "block";
-            //ingredientBtn.style.width = "1000px";
+            arrow.style.transform = "rotate(180deg)";
         } else {
             appList.style.display = "none";
+            arrow.style.transform = "rotate(180deg)";
         }
     });
 

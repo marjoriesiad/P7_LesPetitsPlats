@@ -3,7 +3,6 @@ function addIngredients(recipes) {
     //  GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const ingredientBtn = document.querySelector(".ingredients");
     const ingredientList = document.querySelector(".ingredient-tag");
-    const tagListSelected = document.querySelectorAll(".taglist-selected");
     const arrow = document.querySelector(".arrow");
 
     ingredientBtn.addEventListener("click", () => {
@@ -14,7 +13,7 @@ function addIngredients(recipes) {
             arrow.style.transform = "rotate(180deg)";
         } else {
             ingredientList.style.display = "none";
-            arrow.style.transform = "rotate(deg)";
+            arrow.style.transform = "rotate(0deg)";
         }
     });
 
