@@ -1,5 +1,6 @@
 function recipesFactory(data) {
-    const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
+    const { id, name, servings, image, ingredients, time, description, appliance, ustensils } = data;
+    const recipeImg = `./images/recipes/${image}`;
 
     function getRecipesCardDOM() {
         const card = document.createElement("div");
@@ -16,7 +17,6 @@ function recipesFactory(data) {
 
         card.classList.add("card");
         img.classList.add("card-img-top");
-        img.setAttribute("src", "./images/thumbnail.svg");
         cardBody.classList.add("card-body");
         titleContent.classList.add("title-content");
         recipeContent.classList.add("recipe-content");
@@ -26,6 +26,12 @@ function recipesFactory(data) {
         recipeDescription.classList.add("recipe-description");
         ingredientList.classList.add("ingredient-list");
 
+        if (image == undefined) {
+            img.setAttribute("src", "images/thumbnail.svg");
+        } else {
+            img.setAttribute("src", recipeImg);
+        }
+
 
         cardTitle.textContent = name;
         cookingTime.textContent = time;
@@ -33,6 +39,7 @@ function recipesFactory(data) {
 
         ingredients.forEach((ingredient) => {
             const ingredientItem = document.createElement("li");
+            // mettre un type of pour unit et quantity
             if (ingredient.unit == undefined) {
                 ingredientItem.innerHTML = `<b>${ingredient.ingredient}</b>: ${ingredient.quantity}`;
             } else {
@@ -57,6 +64,6 @@ function recipesFactory(data) {
         return (card);
     }
 
-    return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipesCardDOM };
+    return { id, name, servings, ingredients, image, time, description, appliance, ustensils, getRecipesCardDOM };
 
 }
