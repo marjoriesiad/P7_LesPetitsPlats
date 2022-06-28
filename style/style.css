@@ -55,6 +55,10 @@ header {
     background-color: #ED6454;
 }
 
+.taglist::first-letter {
+    text-transform: capitalize;
+}
+
 .taglist-img {
     width: 20px;
     margin-left: 5px;

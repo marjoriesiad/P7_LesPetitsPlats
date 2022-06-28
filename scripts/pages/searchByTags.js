@@ -3,7 +3,7 @@ function searchByIngredientTag(recipes) {
 
     Array.from(document.querySelectorAll(".tag-selected")).forEach(function(el) {
         let tagSelected = document.getElementsByName("li");
-        console.log(tagSelected);
+        //console.log(tagSelected);
     })
 
 
