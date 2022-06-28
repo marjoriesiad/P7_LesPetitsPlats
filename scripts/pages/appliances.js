@@ -75,7 +75,7 @@ function addAppliances(recipes) {
             const applianceNode = document.createElement("li");
             applianceNode.textContent = app;
             applianceNode.classList.add("taglist");
-            applianceNode.classList.add("taglist-ingredients");
+            applianceNode.classList.add("taglist-appliance");
             applianceItem.appendChild(applianceNode);
         })
 

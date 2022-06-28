@@ -41,17 +41,11 @@ function addUstensils(recipes) {
     })
 
 
-    // CREATION DU TAG AU CLICK SUR L'INGREDIENT
-
-    // création du tag au click sur l'ingrédient
-    const tagList = document.querySelectorAll(".taglist-ustensils");
+    // CREATION DU TAG AU CLICK SUR L'USTENSILE
     const tagSelected = document.querySelector(".tag-selected");
 
-
-    for (let i = 0; i < tagList.length; i++) {
-        let tagItem = tagList[i];
-
-        document.addEventListener("click", (e) => {
+    Array.from(document.querySelectorAll(".ustensils-items")).forEach(function(el) {
+        el.addEventListener("click", (e) => {
             if (e.target && e.target.classList.contains("taglist-ustensils", "tag-selected")) {
                 const tagSelectedLi = document.createElement("li");
                 const tagImg = document.createElement("img");
@@ -59,14 +53,13 @@ function addUstensils(recipes) {
                 tagSelectedLi.classList.add("ustensils-selected");
                 tagImg.classList.add("taglist-img");
                 tagImg.setAttribute("src", "./images/delete-tag.svg");
-                tagSelectedLi.textContent = tagItem.textContent;
+                tagSelectedLi.textContent = e.target.textContent;
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
-                tagItem.style.display = "none";
+                e.target.style.display = "none";
             }
-
-        })
-    }
+        });
+    });
 
 
     // RECHERCHE D'UN INGREDIENT
