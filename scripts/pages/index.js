@@ -19,7 +19,7 @@ function getRecipes() {
             addUstensils(recipes);
 
 
-            searchByIngredientTag(recipes);
+
         });
 
 }

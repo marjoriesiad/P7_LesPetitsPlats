@@ -65,6 +65,7 @@ function addIngredients(recipes) {
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
+                searchByIngredientTag(recipes);
             }
         });
     });
