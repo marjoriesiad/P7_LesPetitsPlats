@@ -50,28 +50,25 @@ function addIngredients(recipes) {
     })
 
 
-    // création du tag au click sur l'ingrédient - A REFAIRE POUR POUVOIR CREE UN TAG APRES UNE RECHERCHE
-    const tagList = document.querySelectorAll(".taglist-ingredients");
+    // création du tag au click sur l'ingrédient
     const tagSelected = document.querySelector(".tag-selected");
 
-    for (let i = 0; i < tagList.length; i++) {
-        let tagItem = tagList[i];
-
-        tagItem.addEventListener("click", (e) => {
-            //if (e.target && e.target.classList.contains("taglist-ingredients", "tag-selected")) { // A REFAIRE -- MET TOUS LES TAGS AU LIEU D'UN SEUL
-            const tagSelectedLi = document.createElement("li");
-            const tagImg = document.createElement("img");
-            tagSelectedLi.classList.add("taglist-selected");
-            tagSelectedLi.classList.add("ingredient-selected");
-            tagImg.classList.add("taglist-img");
-            tagImg.setAttribute("src", "./images/delete-tag.svg");
-            tagSelectedLi.textContent = tagItem.textContent;
-            tagSelected.appendChild(tagSelectedLi);
-            tagSelectedLi.appendChild(tagImg);
-            tagItem.style.display = "none";
-            // }
-        })
-    }
+    Array.from(document.querySelectorAll('.ingredient-items')).forEach(function(el) {
+        el.addEventListener("click", (e) => {
+            if (e.target && e.target.classList.contains("taglist-ingredients", "tag-selected")) {
+                const tagSelectedLi = document.createElement("li");
+                const tagImg = document.createElement("img");
+                tagSelectedLi.classList.add("taglist-selected");
+                tagSelectedLi.classList.add("ingredient-selected");
+                tagImg.classList.add("taglist-img");
+                tagImg.setAttribute("src", "./images/delete-tag.svg");
+                tagSelectedLi.textContent = e.target.textContent;
+                tagSelected.appendChild(tagSelectedLi);
+                tagSelectedLi.appendChild(tagImg);
+                e.target.style.display = "none";
+            }
+        });
+    });
 
     // suppression du tag au click sur celui-ci - A REFAIRE, NE FONCTIONNE PAS
     const ingredientSelected = document.querySelectorAll(".taglist-selected", "ingredient-selected");

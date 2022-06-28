@@ -6,9 +6,7 @@ function searchByIngredientTag(recipes) {
 
     recipes.forEach((recipe) => {
         recipe.ingredients.forEach((recipeIngredient) => {
-            if (ingredientTagList.toLowerCase() == recipeIngredient) {
-                console.log(recipe.id);
-            }
+            if (ingredientTagList.toLowerCase() == recipeIngredient) {}
         })
     })
 

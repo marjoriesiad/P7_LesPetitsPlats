@@ -6,7 +6,7 @@ function getRecipes() {
         .then((data) => {
             const recipes = data.recipes;
 
-            research(recipes)
+            research(recipes);
 
             // affiche les recettes
             displayRecipes(recipes);

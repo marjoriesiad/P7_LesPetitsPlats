@@ -13,10 +13,10 @@ function research(recipes) {
 
             const filteredRecipe = recipes.filter(recipe => {
                 const nameMatch = `${recipe.name}`.toLowerCase().includes(searchedString);
-                //const descriptionMatch = `${recipe.description}`.toLowerCase().includes(searchedString);
+                const descriptionMatch = `${recipe.description}`.toLowerCase().includes(searchedString);
                 const numberOfIngredient = recipe.ingredients.filter(item => `${item.ingredient}`.toLowerCase().includes(searchedString)).length;
 
-                if (numberOfIngredient > 0 || nameMatch) {
+                if (numberOfIngredient > 0 || nameMatch || descriptionMatch) {
                     return recipe;
                 }
             });
@@ -24,18 +24,19 @@ function research(recipes) {
             // Affichage des recettes
             filteredRecipe.forEach((recipe) => {
                 const recipeModel = recipesFactory(recipe);
-                recipeModel.getRecipesCardDOM();
-                console.log(recipe);
+                const recipeCardDOM = recipeModel.getRecipesCardDOM();
+                searchResult.appendChild(recipeCardDOM);
             });
         }
 
         // Remet toutes les recette si la barre de recherche est vide
         if (searchedString.length === 0) {
-            searchResult.innerHTML = "";
 
             recipes.forEach((recipe) => {
                 const recipeModel = recipesFactory(recipe);
-                recipeModel.getRecipesCardDOM();
+                const recipeCardDOM = recipeModel.getRecipesCardDOM();
+                searchResult.appendChild(recipeCardDOM);
+
             })
         };
 
