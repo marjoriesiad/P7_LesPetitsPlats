@@ -10,37 +10,26 @@ function research(recipes) {
         if (searchedString.length > 2) {
             searchResult.innerHTML = "";
 
-            const filteredRecipe = recipes.filter(recipe => {
-                const nameMatch = `${recipe.name}`.toLowerCase().includes(searchedString);
-                const descriptionMatch = `${recipe.description}`.toLowerCase().includes(searchedString);
-                const numberOfIngredient = recipe.ingredients.filter(item => `${item.ingredient}`.toLowerCase().includes(searchedString)).length;
+            for (let i in recipes) {
+                const recipeTitle = recipes[i].name.toLowerCase().includes(searchedString);
+                const recipeDescription = recipes[i].description.toLowerCase().includes(searchedString);
 
-                if (numberOfIngredient > 0 || nameMatch || descriptionMatch) {
-                    return recipe;
+                if (recipeTitle || recipeDescription) {
+                    const recipeModel = recipesFactory(recipes[i]);
+                    const recipeCardDOM = recipeModel.getRecipesCardDOM();
+                    searchResult.appendChild(recipeCardDOM);
                 }
-            });
-
-            // Affichage des recettes
-            for (i = 0; i < filteredRecipe.length; i++) {
-                console.log(filteredRecipe[i]);
             }
-
-            filteredRecipe.forEach((recipe) => {
-                const recipeModel = recipesFactory(recipe);
-                const recipeCardDOM = recipeModel.getRecipesCardDOM();
-                searchResult.appendChild(recipeCardDOM);
-            });
         }
 
         // Remet toutes les recette si la barre de recherche est vide
         if (searchedString.length === 0) {
-
-            recipes.forEach((recipe) => {
-                const recipeModel = recipesFactory(recipe);
+            searchResult.innerHTML = "";
+            for (let i in recipes) {
+                const recipeModel = recipesFactory(recipes[i]);
                 const recipeCardDOM = recipeModel.getRecipesCardDOM();
                 searchResult.appendChild(recipeCardDOM);
-
-            })
+            }
         };
 
     })
