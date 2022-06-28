@@ -70,7 +70,18 @@ function addIngredients(recipes) {
         });
     });
 
+    // suppression du tag au click sur celui-ci - A REFAIRE, NE FONCTIONNE PAS
+    const ingredientSelected = document.querySelectorAll(".taglist-selected", "ingredient-selected");
 
+    for (i = 0; i < ingredientSelected.length; i++) {
+        const selectedTag = ingredientSelected[i];
+
+        selectedTag.addEventListener("click", () => {
+            //tagImg.style.display = "block";
+            selectedTag.style.display = "none";
+        })
+
+    }
 
     // Recherche d'un ingrédient avec des mots
     const searchByIngredient = document.querySelector("#ingredient-input");
@@ -93,7 +104,3 @@ function addIngredients(recipes) {
     })
 
 }
-
-// SEPARER LES FONCTIONS
-// EVENT SUR LE PARENT (au click sur le parent, event sur l'enfant)
-// https://stackoverflow.com/questions/14258787/add-event-listener-on-elements-created-dynamically

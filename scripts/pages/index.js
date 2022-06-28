@@ -4,8 +4,24 @@ function getRecipes() {
         .then((data) => {
             const recipes = data.recipes;
 
+            // algorithme de recherche principal
+            research(recipes);
 
+            // affiche les recettes
             displayRecipes(recipes);
+
+            // affiche les tags d'ingrédients
+            addIngredients(recipes);
+
+            // affiche les tags d'appareils
+            addAppliances(recipes);
+
+            // affiche les tags d'ustensiles
+            addUstensils(recipes);
+
+
+            searchByIngredientTag(recipes);
+
         });
 
 }
