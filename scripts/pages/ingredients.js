@@ -50,7 +50,7 @@ function addIngredients(recipes) {
     })
 
 
-    // création du tag au click sur l'ingrédient - A REFAIRE POUR POUVOIR CREE UN TAG APRES UNE RECHERCHE
+    // création du tag au click sur l'ingrédient
     const tagSelected = document.querySelector(".tag-selected");
 
     Array.from(document.querySelectorAll('.ingredient-items')).forEach(function(el) {

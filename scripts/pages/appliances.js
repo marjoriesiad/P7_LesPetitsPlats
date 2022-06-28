@@ -42,12 +42,9 @@ function addAppliances(recipes) {
 
     // CREATION DU TAG AU CLICK SUR L'APPAREIL
     const tagSelected = document.querySelector(".tag-selected");
-    const tagsList = document.querySelectorAll(".taglist-appliance");
 
-    for (let i = 0; i < tagsList.length; i++) {
-        let tagItem = tagsList[i];
-
-        document.addEventListener("click", (e) => {
+    Array.from(document.querySelectorAll(".appliance-items")).forEach(function(el) {
+        el.addEventListener("click", (e) => {
             if (e.target && e.target.classList.contains("taglist-appliance", "tag-selected")) {
                 const tagSelectedLi = document.createElement("li");
                 const tagImg = document.createElement("img");
@@ -55,13 +52,13 @@ function addAppliances(recipes) {
                 tagSelectedLi.classList.add("appliance-selected");
                 tagImg.classList.add("taglist-img");
                 tagImg.setAttribute("src", "./images/delete-tag.svg");
-                tagSelectedLi.textContent = tagItem.textContent;
+                tagSelectedLi.textContent = e.target.textContent;
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
-                tagItem.style.display = "none";
+                e.target.style.display = "none";
             }
-        })
-    }
+        });
+    });
 
     // RECHERCHE D'UN APPAREIL AVEC DES MOTS
     const searchByAppliance = document.querySelector("#appliance-input");
