@@ -22,6 +22,8 @@ function searchByTags(recipes) {
                 }
             }
 
+
+
             if (el.classList.contains("ustensils-selected")) {
                 recipe.ustensils.filter(item => {
                     if (item.includes(el.textContent.toLowerCase())) {
@@ -45,4 +47,7 @@ function searchByTags(recipes) {
             searchResults.appendChild(recipeCardDOM);
         })
     })
+
+
+
 }
