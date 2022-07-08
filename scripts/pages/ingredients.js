@@ -65,23 +65,34 @@ function addIngredients(recipes) {
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
-                searchByIngredientTag(recipes);
+                searchByTags(recipes);
             }
         });
     });
 
     // suppression du tag au click sur celui-ci - A REFAIRE, NE FONCTIONNE PAS
-    const ingredientSelected = document.querySelectorAll(".taglist-selected", "ingredient-selected");
+    const ingredientItems = document.querySelector(".ingredient-items");
+    //const applianceItems = document.querySelector(".appliance-items");
+    //const ustensilItems = document.querySelector(".ustensils-items");
 
-    for (i = 0; i < ingredientSelected.length; i++) {
-        const selectedTag = ingredientSelected[i];
-
-        selectedTag.addEventListener("click", () => {
-            //tagImg.style.display = "block";
-            selectedTag.style.display = "none";
+    Array.from(document.querySelectorAll(".tag-selected")).forEach(function(el) {
+        el.addEventListener("click", (e) => {
+            if (e.target && e.target.classList.contains("taglist-selected")) {
+                e.target.style.display = "none";
+                const newLi = document.createElement("li");
+                if (e.target.classList.contains("ingredient-selected")) {
+                    newLi.classList.add("taglist", "taglist-ingredients");
+                    ingredientItems.appendChild(e.target);
+                } else if (e.target.classList.contains("appliance-selected")) {
+                    newLi.classList.add("taglist", "taglist-appliance");
+                    applianceItems.appendChild(e.target);
+                } else {
+                    newLi.classList.add("taglist", "taglist-ustensils")
+                    ustensilItems.appendChild(e.target);
+                }
+            }
         })
-
-    }
+    })
 
     // Recherche d'un ingrédient avec des mots
     const searchByIngredient = document.querySelector("#ingredient-input");

@@ -58,10 +58,12 @@ function addAppliances(recipes) {
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
-                searchByIngredientTag(recipes);
+                searchByTags(recipes);
             }
         });
     });
+
+
 
     // RECHERCHE D'UN APPAREIL AVEC DES MOTS
     const searchByAppliance = document.querySelector("#appliance-input");
