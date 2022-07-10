@@ -38,9 +38,11 @@ function searchByTags(recipes) {
         });
 
 
+        arrayFilter.splice(1, 1);
+
         // Affichage des recettes
         searchResults.innerHTML = "";
-        arrayFilter.forEach((recipe) => {
+        recipes.forEach((recipe) => {
             console.log(recipe);
             const recipeModel = recipesFactory(recipe);
             const recipeCardDOM = recipeModel.getRecipesCardDOM();
