@@ -69,32 +69,41 @@ function addIngredients(recipes) {
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
                 searchByTags(recipes);
+
             }
         });
     });
 
-    // suppression du tag au click sur celui-ci - A REFAIRE, NE FONCTIONNE PAS
+    // suppression du tag au click sur celui-ci
     const ingredientItems = document.querySelector(".ingredient-items");
-    //const applianceItems = document.querySelector(".appliance-items");
-    //const ustensilItems = document.querySelector(".ustensils-items");
+    const applianceItems = document.querySelector(".appliance-items");
+    const ustensilItems = document.querySelector(".ustensils-items");
 
     Array.from(document.querySelectorAll(".tag-selected")).forEach(function(el) {
         el.addEventListener("click", (e) => {
+
             if (e.target && e.target.classList.contains("taglist-selected")) {
-                e.target.style.display = "none";
+                const textBtn = e.target.textContent;
                 const newLi = document.createElement("li");
+                newLi.innerHTML = textBtn;
                 if (e.target.classList.contains("ingredient-selected")) {
                     newLi.classList.add("taglist", "taglist-ingredients");
-                    ingredientItems.appendChild(e.target);
+                    ingredientItems.appendChild(newLi);
+
                 } else if (e.target.classList.contains("appliance-selected")) {
                     newLi.classList.add("taglist", "taglist-appliance");
-                    applianceItems.appendChild(e.target);
+                    applianceItems.appendChild(newLi);
                 } else {
                     newLi.classList.add("taglist", "taglist-ustensils")
-                    ustensilItems.appendChild(e.target);
+                    ustensilItems.appendChild(newLi);
                 }
+
+                e.target.remove();
             }
+            searchByTags(recipes);
         })
+
+
     })
 
     // Recherche d'un ingrédient avec des mots
@@ -118,7 +127,3 @@ function addIngredients(recipes) {
     })
 
 }
-
-// SEPARER LES FONCTIONS
-// EVENT SUR LE PARENT (au click sur le parent, event sur l'enfant)
-// https://stackoverflow.com/questions/14258787/add-event-listener-on-elements-created-dynamically

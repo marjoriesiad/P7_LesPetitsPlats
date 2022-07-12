@@ -94,18 +94,21 @@ header {
 
 .ingredient-tag {
     display: none;
+    position: relative;
 }
 
 .appliance-tag {
     display: none;
     margin-left: 175px;
     color: white;
+    position: relative;
 }
 
 .ustensils-tag {
     display: none;
     margin-left: 349px;
     color: white;
+    position: relative;
 }
 
 .dropdown-input {
