@@ -35,6 +35,11 @@ function searchByTags(recipes) {
             }
 
             recipes = arrayFilter;
+
+
+            if (arrayFilter.length === 0) {
+                searchResults.innerHTML = "Aucune recette trouvée.";
+            }
         });
 
 

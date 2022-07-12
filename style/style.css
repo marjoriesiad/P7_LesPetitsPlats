@@ -116,6 +116,10 @@ header {
     margin-left: 30px;
 }
 
+.open {
+    width: 66%;
+}
+
 .dropdown-input::placeholder {
     color: #fff;
 }

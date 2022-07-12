@@ -11,9 +11,11 @@ function addAppliances(recipes) {
         if (appList.classList.contains("open")) {
             appList.style.display = "block";
             arrow.style.transform = "rotate(180deg)";
+            applianceBtn.style.width = "66%";
         } else {
             appList.style.display = "none";
             arrow.style.transform = "rotate(180deg)";
+            applianceBtn.style.width = "170px";
         }
     });
 

@@ -11,9 +11,11 @@ function addUstensils(recipes) {
         if (ustensilsList.classList.contains("open")) {
             ustensilsList.style.display = "block";
             arrow.style.transform = "rotate(180deg)";
+            ustensilsBtn.style.width = "66%";
         } else {
             ustensilsList.style.display = "none";
             arrow.style.transform = "rotate(0deg)";
+            ustensilsBtn.style.width = "170px";
         }
     });
 

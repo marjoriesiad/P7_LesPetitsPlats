@@ -11,9 +11,12 @@ function addIngredients(recipes) {
         if (ingredientList.classList.contains("open")) {
             ingredientList.style.display = "block";
             arrow.style.transform = "rotate(180deg)";
+            ingredientBtn.style.width = "66%";
+
         } else {
             ingredientList.style.display = "none";
             arrow.style.transform = "rotate(0deg)";
+            ingredientBtn.style.width = "170px";
         }
     });
 
