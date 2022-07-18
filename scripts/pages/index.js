@@ -6,8 +6,6 @@ function getRecipes() {
         .then((data) => {
             const recipes = data.recipes;
 
-            research(recipes);
-
             // affiche les recettes
             displayRecipes(recipes);
 
@@ -20,8 +18,10 @@ function getRecipes() {
             // affiche les tags d'ustensiles
             addUstensils(recipes);
 
+            searchByTags(recipes);
 
-            searchByIngredientTag(recipes);
+            research(recipes);
+
 
 
         });
@@ -30,7 +30,7 @@ function getRecipes() {
 
 function displayRecipes(recipes) {
     const recipeSection = document.querySelector(".recipes");
-    recipeSection.innerHTML = "";
+
     recipes.forEach((recipe) => {
         const recipeModel = recipesFactory(recipe);
         const recipeCardDOM = recipeModel.getRecipesCardDOM();

@@ -10,7 +10,7 @@ function research(recipes) {
         // à partir de 3 caractères
         if (searchedString.length > 2) {
             searchResult.innerHTML = "";
-
+            console.log(recipes);
             const filteredRecipe = recipes.filter(recipe => {
                 const nameMatch = `${recipe.name}`.toLowerCase().includes(searchedString);
                 const descriptionMatch = `${recipe.description}`.toLowerCase().includes(searchedString);

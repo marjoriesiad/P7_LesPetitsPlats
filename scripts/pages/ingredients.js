@@ -3,7 +3,6 @@ function addIngredients(recipes) {
     //  GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const ingredientBtn = document.querySelector(".ingredients");
     const ingredientList = document.querySelector(".ingredient-tag");
-    const tagListSelected = document.querySelectorAll(".taglist-selected");
     const arrow = document.querySelector(".arrow");
 
     ingredientBtn.addEventListener("click", () => {
@@ -12,9 +11,12 @@ function addIngredients(recipes) {
         if (ingredientList.classList.contains("open")) {
             ingredientList.style.display = "block";
             arrow.style.transform = "rotate(180deg)";
+            ingredientBtn.style.width = "66%";
+
         } else {
             ingredientList.style.display = "none";
-            arrow.style.transform = "rotate(deg)";
+            arrow.style.transform = "rotate(0deg)";
+            ingredientBtn.style.width = "170px";
         }
     });
 
@@ -66,22 +68,43 @@ function addIngredients(recipes) {
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
+                searchByTags(recipes);
+
             }
         });
     });
 
-    // suppression du tag au click sur celui-ci - A REFAIRE, NE FONCTIONNE PAS
-    const ingredientSelected = document.querySelectorAll(".taglist-selected", "ingredient-selected");
+    // suppression du tag au click sur celui-ci
+    const ingredientItems = document.querySelector(".ingredient-items");
+    const applianceItems = document.querySelector(".appliance-items");
+    const ustensilItems = document.querySelector(".ustensils-items");
 
-    for (i = 0; i < ingredientSelected.length; i++) {
-        const selectedTag = ingredientSelected[i];
+    Array.from(document.querySelectorAll(".tag-selected")).forEach(function(el) {
+        el.addEventListener("click", (e) => {
 
-        selectedTag.addEventListener("click", () => {
-            //tagImg.style.display = "block";
-            selectedTag.style.display = "none";
+            if (e.target && e.target.classList.contains("taglist-selected")) {
+                const textBtn = e.target.textContent;
+                const newLi = document.createElement("li");
+                newLi.innerHTML = textBtn;
+                if (e.target.classList.contains("ingredient-selected")) {
+                    newLi.classList.add("taglist", "taglist-ingredients");
+                    ingredientItems.appendChild(newLi);
+
+                } else if (e.target.classList.contains("appliance-selected")) {
+                    newLi.classList.add("taglist", "taglist-appliance");
+                    applianceItems.appendChild(newLi);
+                } else {
+                    newLi.classList.add("taglist", "taglist-ustensils")
+                    ustensilItems.appendChild(newLi);
+                }
+
+                e.target.remove();
+            }
+            searchByTags(recipes);
         })
 
-    }
+
+    })
 
     // Recherche d'un ingrédient avec des mots
     const searchByIngredient = document.querySelector("#ingredient-input");
@@ -104,7 +127,3 @@ function addIngredients(recipes) {
     })
 
 }
-
-// SEPARER LES FONCTIONS
-// EVENT SUR LE PARENT (au click sur le parent, event sur l'enfant)
-// https://stackoverflow.com/questions/14258787/add-event-listener-on-elements-created-dynamically

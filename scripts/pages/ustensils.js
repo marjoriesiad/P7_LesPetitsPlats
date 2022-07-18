@@ -3,14 +3,19 @@ function addUstensils(recipes) {
     // GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const ustensilsBtn = document.querySelector(".ustensils");
     const ustensilsList = document.querySelector(".ustensils-tag");
+    const arrow = document.querySelector(".arrow");
 
     ustensilsBtn.addEventListener("click", () => {
         ustensilsList.classList.toggle("open");
 
         if (ustensilsList.classList.contains("open")) {
             ustensilsList.style.display = "block";
+            arrow.style.transform = "rotate(180deg)";
+            ustensilsBtn.style.width = "66%";
         } else {
             ustensilsList.style.display = "none";
+            arrow.style.transform = "rotate(0deg)";
+            ustensilsBtn.style.width = "170px";
         }
     });
 
@@ -41,17 +46,11 @@ function addUstensils(recipes) {
     })
 
 
-    // CREATION DU TAG AU CLICK SUR L'INGREDIENT
-
-    // création du tag au click sur l'ingrédient
-    const tagList = document.querySelectorAll(".taglist-ustensils");
+    // CREATION DU TAG AU CLICK SUR L'USTENSILE
     const tagSelected = document.querySelector(".tag-selected");
 
-
-    for (let i = 0; i < tagList.length; i++) {
-        let tagItem = tagList[i];
-
-        document.addEventListener("click", (e) => {
+    Array.from(document.querySelectorAll(".ustensils-items")).forEach(function(el) {
+        el.addEventListener("click", (e) => {
             if (e.target && e.target.classList.contains("taglist-ustensils", "tag-selected")) {
                 const tagSelectedLi = document.createElement("li");
                 const tagImg = document.createElement("img");
@@ -59,14 +58,14 @@ function addUstensils(recipes) {
                 tagSelectedLi.classList.add("ustensils-selected");
                 tagImg.classList.add("taglist-img");
                 tagImg.setAttribute("src", "./images/delete-tag.svg");
-                tagSelectedLi.textContent = tagItem.textContent;
+                tagSelectedLi.textContent = e.target.textContent;
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
-                tagItem.style.display = "none";
+                e.target.style.display = "none";
+                searchByTags(recipes);
             }
-
-        })
-    }
+        });
+    });
 
 
     // RECHERCHE D'UN INGREDIENT

@@ -3,15 +3,19 @@ function addAppliances(recipes) {
     // GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const applianceBtn = document.querySelector(".appliance");
     const appList = document.querySelector(".appliance-tag");
+    const arrow = document.querySelector(".arrow");
 
     applianceBtn.addEventListener("click", () => {
         appList.classList.toggle("open");
 
         if (appList.classList.contains("open")) {
             appList.style.display = "block";
-            //ingredientBtn.style.width = "1000px";
+            arrow.style.transform = "rotate(180deg)";
+            applianceBtn.style.width = "66%";
         } else {
             appList.style.display = "none";
+            arrow.style.transform = "rotate(180deg)";
+            applianceBtn.style.width = "170px";
         }
     });
 
@@ -42,12 +46,9 @@ function addAppliances(recipes) {
 
     // CREATION DU TAG AU CLICK SUR L'APPAREIL
     const tagSelected = document.querySelector(".tag-selected");
-    const tagsList = document.querySelectorAll(".taglist-appliance");
 
-    for (let i = 0; i < tagsList.length; i++) {
-        let tagItem = tagsList[i];
-
-        document.addEventListener("click", (e) => {
+    Array.from(document.querySelectorAll(".appliance-items")).forEach(function(el) {
+        el.addEventListener("click", (e) => {
             if (e.target && e.target.classList.contains("taglist-appliance", "tag-selected")) {
                 const tagSelectedLi = document.createElement("li");
                 const tagImg = document.createElement("img");
@@ -55,13 +56,16 @@ function addAppliances(recipes) {
                 tagSelectedLi.classList.add("appliance-selected");
                 tagImg.classList.add("taglist-img");
                 tagImg.setAttribute("src", "./images/delete-tag.svg");
-                tagSelectedLi.textContent = tagItem.textContent;
+                tagSelectedLi.textContent = e.target.textContent;
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
-                tagItem.style.display = "none";
+                e.target.style.display = "none";
+                searchByTags(recipes);
             }
-        })
-    }
+        });
+    });
+
+
 
     // RECHERCHE D'UN APPAREIL AVEC DES MOTS
     const searchByAppliance = document.querySelector("#appliance-input");
@@ -78,7 +82,7 @@ function addAppliances(recipes) {
             const applianceNode = document.createElement("li");
             applianceNode.textContent = app;
             applianceNode.classList.add("taglist");
-            applianceNode.classList.add("taglist-ingredients");
+            applianceNode.classList.add("taglist-appliance");
             applianceItem.appendChild(applianceNode);
         })
 
