@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 function recipesFactory(data) {
     const { id, name, servings, image, ingredients, time, description, appliance, ustensils } = data;
     const recipeImg = `./images/recipes/${image}`;
@@ -47,7 +48,7 @@ function recipesFactory(data) {
             }
             ingredientList.appendChild(ingredientItem);
 
-        })
+        });
 
         card.appendChild(img);
         card.appendChild(cardBody);

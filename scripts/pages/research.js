@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 function research(recipes) {
     const input = document.querySelector(".input");
     const searchResult = document.querySelector(".recipes");
@@ -30,7 +32,7 @@ function research(recipes) {
                 const recipeCardDOM = recipeModel.getRecipesCardDOM();
                 searchResult.appendChild(recipeCardDOM);
             }
-        };
+        }
 
-    })
+    });
 }
