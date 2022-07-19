@@ -18,7 +18,7 @@ function getRecipes() {
             // affiche les tags d'ustensiles
             addUstensils(recipes);
 
-            //searchByTags(recipes);
+            research(recipes);
 
 
 

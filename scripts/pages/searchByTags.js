@@ -1,8 +1,45 @@
 let arrayFilter;
 
 function searchByTags(recipes) {
+    const input = document.querySelector(".input");
     const searchResults = document.querySelector(".recipes");
     arrayFilter = [];
+
+
+    input.addEventListener("input", (e) => {
+        const searchedString = e.target.value.toLowerCase();
+
+        // à partir de 3 caractères
+        if (searchedString.length > 2) {
+            searchResults.innerHTML = "";
+
+            for (let i in recipes) {
+                const recipeTitle = recipes[i].name.toLowerCase().includes(searchedString);
+                const recipeDescription = recipes[i].description.toLowerCase().includes(searchedString);
+
+                if (recipeTitle || recipeDescription) {
+                    arrayFilter.push(recipes[i]);
+                    const recipeModel = recipesFactory(recipes[i]);
+                    const recipeCardDOM = recipeModel.getRecipesCardDOM();
+                    searchResults.appendChild(recipeCardDOM);
+                }
+            }
+        }
+
+        // Remet toutes les recette si la barre de recherche est vide
+        if (searchedString.length === 0) {
+            searchResults.innerHTML = "";
+            for (let i in recipes) {
+                const recipeModel = recipesFactory(recipes[i]);
+                const recipeCardDOM = recipeModel.getRecipesCardDOM();
+                searchResults.appendChild(recipeCardDOM);
+            }
+        };
+
+        recipes = arrayFilter;
+
+    })
+
     if (Array.from(document.querySelectorAll(".tag-selected li")).length === 0) {
         arrayFilter = recipes;
     } else {
@@ -67,5 +104,6 @@ function searchByTags(recipes) {
         const recipeCardDOM = recipeModel.getRecipesCardDOM();
         searchResults.appendChild(recipeCardDOM);
     })
+
 
 }
