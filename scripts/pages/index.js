@@ -20,7 +20,7 @@ function getRecipes() {
             addUstensils(recipes);
 
 
-            searchByIngredientTag(recipes);
+            searchByTags(recipes);
 
         });
 

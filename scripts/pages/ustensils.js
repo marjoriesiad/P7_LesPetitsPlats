@@ -3,14 +3,19 @@ function addUstensils(recipes) {
     // GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
     const ustensilsBtn = document.querySelector(".ustensils");
     const ustensilsList = document.querySelector(".ustensils-tag");
+    const arrow = document.querySelector(".arrow");
 
     ustensilsBtn.addEventListener("click", () => {
         ustensilsList.classList.toggle("open");
 
         if (ustensilsList.classList.contains("open")) {
             ustensilsList.style.display = "block";
+            arrow.style.transform = "rotate(180deg)";
+            ustensilsBtn.style.width = "66%";
         } else {
             ustensilsList.style.display = "none";
+            arrow.style.transform = "rotate(0deg)";
+            ustensilsBtn.style.width = "170px";
         }
     });
 
@@ -57,6 +62,7 @@ function addUstensils(recipes) {
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
+                searchByTags(recipes);
             }
         });
     });
