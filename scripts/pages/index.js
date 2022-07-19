@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 function getRecipes() {
     fetch("./data/recipes.json")
         .then((res) => res.json())

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 function addAppliances(recipes) {
 
     // GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
@@ -27,12 +29,12 @@ function addAppliances(recipes) {
     // récupère tous les appareils pour les mettre dans un tableau
     recipes.forEach((recipe) => {
         applianceArray.push(recipe.appliance.toLowerCase());
-    })
+    });
 
     // retire les doublons du tableau des appareils
     let filteredAppliances = applianceArray.filter((el, i) =>
         applianceArray.indexOf(el) === i
-    )
+    );
 
     // affichage des appareils dans la liste de tags
     filteredAppliances.forEach(filteredAppliance => {
@@ -41,7 +43,7 @@ function addAppliances(recipes) {
         applianceList.classList.add("taglist-appliance");
         applianceList.textContent = filteredAppliance;
         applianceSection.appendChild(applianceList);
-    })
+    });
 
 
     // CREATION DU TAG AU CLICK SUR L'APPAREIL
@@ -84,7 +86,7 @@ function addAppliances(recipes) {
             applianceNode.classList.add("taglist");
             applianceNode.classList.add("taglist-appliance");
             applianceItem.appendChild(applianceNode);
-        })
+        });
 
-    })
+    });
 }
