@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 let arrayFilter = [];
 
 function searchByTags(recipes) {
@@ -56,7 +58,7 @@ function searchByTags(recipes) {
 
             //console.log(arrayFilter);
 
-        })
+        });
     }
 
 
@@ -67,6 +69,6 @@ function searchByTags(recipes) {
         const recipeModel = recipesFactory(recipe);
         const recipeCardDOM = recipeModel.getRecipesCardDOM();
         searchResults.appendChild(recipeCardDOM);
-    })
+    });
 
 }

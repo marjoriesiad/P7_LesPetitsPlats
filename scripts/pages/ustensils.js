@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 function addUstensils(recipes) {
 
     // GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
@@ -28,13 +30,13 @@ function addUstensils(recipes) {
     recipes.forEach((recipe) => {
         recipe.ustensils.forEach((ust) => {
             ustensilsArray.push(ust.toLowerCase());
-        })
-    })
+        });
+    });
 
     // retire les doublons du tableau
     let filteredUstensils = ustensilsArray.filter((el, i) =>
         ustensilsArray.indexOf(el) === i
-    )
+    );
 
     // affiche les ingrédients dans la liste de tags
     filteredUstensils.forEach((filteredUstensil) => {
@@ -43,7 +45,7 @@ function addUstensils(recipes) {
         ustensilList.classList.add("taglist-ustensils");
         ustensilList.textContent = filteredUstensil;
         ustenstilsSection.appendChild(ustensilList);
-    })
+    });
 
 
     // CREATION DU TAG AU CLICK SUR L'USTENSILE
@@ -85,8 +87,8 @@ function addUstensils(recipes) {
             ustensilNode.classList.add("taglist");
             ustensilNode.classList.add("taglist-ustensils");
             ustensilsItem.appendChild(ustensilNode);
-        })
-    })
+        });
+    });
 
 
 

@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 function addIngredients(recipes) {
 
     //  GESTION DE L'OUVERTURE/FERMETURE DU BLOCK DE TAGS
@@ -29,14 +31,14 @@ function addIngredients(recipes) {
     // récupère la partie ingrédients pour la mettre dans un tableau
     recipes.forEach((recipe) => {
         ingredientsArray.push(recipe.ingredients);
-    })
+    });
 
     // récupère les ingrédients pour les mettre dans un seul tableau
     ingredientsArray.map(el => {
         el.map(element => {
             filteredArray.push(element.ingredient.toLowerCase());
-        })
-    })
+        });
+    });
 
     // retire les doublons du tableau filtré d'ingrédients
     let filteredIngredients = filteredArray.filter((el, i) =>
@@ -49,13 +51,13 @@ function addIngredients(recipes) {
         ingredientList.classList.add("taglist", "taglist-ingredients");
         ingredientList.textContent = filteredIngredient;
         ingredientsSection.appendChild(ingredientList);
-    })
+    });
 
 
     // création du tag au click sur l'ingrédient
     const tagSelected = document.querySelector(".tag-selected");
 
-    Array.from(document.querySelectorAll('.ingredient-items')).forEach(function(el) {
+    Array.from(document.querySelectorAll(".ingredient-items")).forEach(function(el) {
         el.addEventListener("click", (e) => {
             if (e.target && e.target.classList.contains("taglist-ingredients", "tag-selected")) {
                 const tagSelectedLi = document.createElement("li");
@@ -94,17 +96,17 @@ function addIngredients(recipes) {
                     newLi.classList.add("taglist", "taglist-appliance");
                     applianceItems.appendChild(newLi);
                 } else {
-                    newLi.classList.add("taglist", "taglist-ustensils")
+                    newLi.classList.add("taglist", "taglist-ustensils");
                     ustensilItems.appendChild(newLi);
                 }
 
                 e.target.remove();
             }
             searchByTags(recipes);
-        })
+        });
 
 
-    })
+    });
 
     // Recherche d'un ingrédient avec des mots
     const searchByIngredient = document.querySelector("#ingredient-input");
@@ -123,7 +125,7 @@ function addIngredients(recipes) {
             ingredientNode.classList.add("taglist");
             ingredientNode.classList.add("taglist-ingredients");
             ingredientItem.appendChild(ingredientNode);
-        })
-    })
+        });
+    });
 
 }
