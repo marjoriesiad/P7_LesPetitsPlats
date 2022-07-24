@@ -62,7 +62,8 @@ function addAppliances(recipes) {
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
-                searchByTags(recipes);
+                const searchTerms = document.querySelector(".input").value;
+                searchByTags(recipes, searchTerms);
             }
         });
     });

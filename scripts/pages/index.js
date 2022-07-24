@@ -1,9 +1,11 @@
 /* eslint-disable no-undef */
+let recipes;
+
 function getRecipes() {
     fetch("./data/recipes.json")
         .then((res) => res.json())
         .then((data) => {
-            const recipes = data.recipes;
+            recipes = data.recipes;
 
             // affiche les recettes
             displayRecipes(recipes);
@@ -18,6 +20,8 @@ function getRecipes() {
             addUstensils(recipes);
 
             research(recipes);
+
+            //searchByTags(recipes);
 
 
 

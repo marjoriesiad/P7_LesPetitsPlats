@@ -70,7 +70,8 @@ function addIngredients(recipes) {
                 tagSelected.appendChild(tagSelectedLi);
                 tagSelectedLi.appendChild(tagImg);
                 e.target.style.display = "none";
-                searchByTags(recipes);
+                const searchTerms = document.querySelector(".input").value;
+                searchByTags(recipes, searchTerms);
 
             }
         });
@@ -102,7 +103,8 @@ function addIngredients(recipes) {
 
                 e.target.remove();
             }
-            searchByTags(recipes);
+            const searchTerms = document.querySelector(".input").value;
+            searchByTags(recipes, searchTerms);
         });
 
 
